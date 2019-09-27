@@ -14,7 +14,7 @@ class Tenant:
 
     def post(self, amount: float, name: str=None):
         self.balance += amount
-        self.record.append("%s:\t\t%.2f" % (name, amount))
+        self.record.append("%s=\t\t%.2f" % (name, amount))
 
     def check(self):
         self.record.append("Due:\t\t%.2f" % self.balance)
@@ -52,4 +52,4 @@ class Bill:
             if days < 0:
                 days = 0
             tenant.post(amount_per_day * days,
-                        self.name + "\n\t%.2f*/%d" % (amount_per_day, days))
+                        self.name + "\n\t%.2f*%d" % (amount_per_day, days))
