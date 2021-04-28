@@ -4,6 +4,12 @@ from datetime import datetime
 all_tenants = []
 
 
+def check_all(date):
+    for t in all_tenants:
+        if t.start <= date <= t.end:
+            t.check()
+
+
 class Tenant:
     def __init__(self, name: str, start: datetime, end: datetime = None):
         self.name = name
@@ -34,6 +40,9 @@ class Tenant:
 
     def __str__(self):
         return self.name
+
+    def end_at(self, end_date):
+        self.end = end_date
 
 
 class Bill:
